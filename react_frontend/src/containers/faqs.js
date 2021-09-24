@@ -2,7 +2,8 @@ import React from 'react';
 import {Accordion} from '../components'
 import { Item } from '../components/accordion/styles/accordion';
 import OptForm from '../components/opt-form';
-import faqsData from '../fixtures/faqs';
+// import faqsData from '../fixtures/faqs';
+import faqsData from '../fixtures/faqs.json';
 
 export function FaqsContainer() {
     return ( 

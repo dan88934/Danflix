@@ -1,5 +1,6 @@
 import React from 'react';
-import jumboData from '../fixtures/jumbo';
+// import jumboData from '../fixtures/jumbo';
+import jumboData from '../fixtures/jumbo.json';
 import { Jumbotron } from '../components';
 // import logo from './logo.svg';
 // import './App.css';
