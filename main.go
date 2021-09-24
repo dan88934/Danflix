@@ -6,6 +6,8 @@ import (
   "net/http"
 
   "github.com/gin-gonic/gin"
+
+  "github.com/gin-contrib/static"
 )
 
 var router *gin.Engine
@@ -17,12 +19,17 @@ func main() {
 
   // Process the templates at the start so that they don't have to be loaded
   // from the disk again. This makes serving HTML pages very fast.
-  router.Static("/react_frontend/lib", "./react_frontend/lib")
+
+  // router.Static("/react_frontend/lib/", "./react_frontend/lib/")
+
+  // router.Static("/assets/js", "./assets/js")
   // router.Static("/react_frontend/lib", "./react_frontend/lib")
   // router.Static("/static", "./static")
 
+  router.Use(static.Serve("/", static.LocalFile("./react_frontend/lib/", true)))
+
   // router.LoadHTMLGlob("assets/*")
-  router.LoadHTMLGlob("./react_frontend/lib/*")
+  router.LoadHTMLGlob("./react_frontend/lib/index.html") 
 
   // Define the route for the index page and display the index.html template
   // To start with, we'll use an inline route handler. Later on, we'll create
@@ -34,7 +41,7 @@ func main() {
       // Set the HTTP status to 200 (OK)
       http.StatusOK,
       // Use the index.html template
-      "home.html",
+      "index.html",
       // Pass the data that the page uses (in this case, 'title')
       gin.H{
         "title": "Home Page",

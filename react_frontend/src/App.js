@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Home, Browse, Signin, Signup } from './pages';
 import * as ROUTES from './constants/routes';
@@ -27,3 +28,5 @@ export default function App() {
     </Router>
   );
 }
+
+// ReactDOM.render(<App />, document.getElementById('root'));

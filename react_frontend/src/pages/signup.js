@@ -84,4 +84,4 @@ export default function SignUp() {
   );
 }
 
-ReactDOM.render(<SignUp />, document.getElementById('app'));
+// ReactDOM.render(<SignUp />, document.getElementById('app'));

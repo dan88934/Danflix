@@ -12,7 +12,7 @@ module.exports = function(_env, argv) {
 
   return {
     devtool: isDevelopment && "cheap-module-source-map",
-    entry: "./src/App.js",
+    entry: "./src/index.js",
     output: {
       path: path.resolve(__dirname, "lib"),
       filename: "assets/js/[name].[contenthash:8].js",

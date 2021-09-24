@@ -16,4 +16,4 @@ export default function Browse() {
     return <BrowseContainer slides={slides}/>;
 }
 
-ReactDOM.render(<Browse />, document.getElementById('app'));
+// ReactDOM.render(<Browse />, document.getElementById('app'));
