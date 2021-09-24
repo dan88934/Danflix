@@ -17,10 +17,12 @@ func main() {
 
   // Process the templates at the start so that they don't have to be loaded
   // from the disk again. This makes serving HTML pages very fast.
-  router.Static("/react_frontend/lib/pages", "./react_frontend/lib/pages")
+  router.Static("/react_frontend/lib", "./react_frontend/lib")
+  // router.Static("/react_frontend/lib", "./react_frontend/lib")
   // router.Static("/static", "./static")
 
-  router.LoadHTMLGlob("assets/*")
+  // router.LoadHTMLGlob("assets/*")
+  router.LoadHTMLGlob("./react_frontend/lib/*")
 
   // Define the route for the index page and display the index.html template
   // To start with, we'll use an inline route handler. Later on, we'll create
@@ -32,7 +34,7 @@ func main() {
       // Set the HTTP status to 200 (OK)
       http.StatusOK,
       // Use the index.html template
-      "index.html",
+      "home.html",
       // Pass the data that the page uses (in this case, 'title')
       gin.H{
         "title": "Home Page",
@@ -47,7 +49,7 @@ func main() {
       // Set the HTTP status to 200 (OK)
       http.StatusOK,
       // Use the index.html template
-      "login.html",
+      "signin.html",
       // Pass the data that the page uses (in this case, 'title')
       gin.H{
         "title": "Login Page",
