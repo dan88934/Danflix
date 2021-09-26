@@ -5,6 +5,7 @@ const webpack = require("webpack");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const json = require("json-loader");
 // const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = function(_env, argv) {
   const isProduction = argv.mode === "production";
@@ -80,13 +81,15 @@ module.exports = function(_env, argv) {
         // }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "public/index.html"),
-        inject: true
+        inject: true,
+        // favicon: "./src/favicon.ico"
       }),
       new webpack.DefinePlugin({
         "process.env.NODE_ENV": JSON.stringify(
           isProduction ? "production" : "development"
         )
-      })
+      }),
+      // new FaviconsWebpackPlugin('favicon.ico') 
     ].filter(Boolean),
     optimization: {
       minimize: isProduction,
