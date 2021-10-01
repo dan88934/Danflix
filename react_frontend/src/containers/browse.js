@@ -3,6 +3,7 @@ import Fuse from 'fuse.js';
 import { Card, Header, Loading, Player } from '../components';
 import * as ROUTES from '../constants/routes';
 // import logo from '../logo.png';
+import logo from '/public/images/logo.png';
 import { FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
@@ -13,6 +14,7 @@ export function BrowseContainer({ slides }) {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [slideRows, setSlideRows] = useState([]);
+  const [video, setVideo] = useState('');
 
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
@@ -96,13 +98,18 @@ export function BrowseContainer({ slides }) {
                 </Card.Item>
               ))}
             </Card.Entities>
+            {/* {video.map((item) => ( //Added this - I need to set the video with a setVideo */}
+            {slideItem.data.map((item) => (
             <Card.Feature category={category}>
               <Player>
+             
                 <Player.Button />
-                <Player.Video src="/videos/bunny.mp4" /> 
+                <Player.Video src={`/videos/${item.file_name}.mp4`} />
+                {/* <Player.Video src="/videos/AmandaKnoxTrailer.mp4" /> */}
               </Player>
               <p>player</p>
             </Card.Feature>
+        ))}
           </Card>
         ))}
       </Card.Group>
