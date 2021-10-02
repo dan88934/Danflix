@@ -9,15 +9,16 @@ import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
 
 export function BrowseContainer({ slides }) {
-  const [category, setCategory] = useState('series');
+  const [category, setCategory] = useState('series'); //COULD WE NOT USE STATE SERIES FOR THE FILE_ID TOO?
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [slideRows, setSlideRows] = useState([]);
-  const [video, setVideo] = useState('');
+  // const [video, setVideo] = useState('');
 
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
+
 
   useEffect(() => { //We use Fuse for the live search function
     setTimeout(() => {
@@ -86,30 +87,28 @@ export function BrowseContainer({ slides }) {
       <Card.Group>
         {slideRows.map((slideItem) => (
           <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
-            <Card.Title>{slideItem.title}</Card.Title>
+            <Card.Title>{slideItem.title} </Card.Title>
             <Card.Entities>
               {slideItem.data.map((item) => (
                 <Card.Item key={item.docId} item={item}>
                   <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} />
                   <Card.Meta>
                     <Card.SubTitle>{item.title}</Card.SubTitle>
-                    <Card.Text>{item.description}</Card.Text>
+                    {/* <Card.Text>{item.description}</Card.Text> */}
+                    <Card.Text>{item.file_name}</Card.Text>
                   </Card.Meta>
                 </Card.Item>
               ))}
             </Card.Entities>
             {/* {video.map((item) => ( //Added this - I need to set the video with a setVideo */}
-            {slideItem.data.map((item) => (
+            {/* {slideItem.data.map((item) => ( //this led to each of the slide items rendering its own feature at the same time*/} 
             <Card.Feature category={category}>
               <Player>
-             
                 <Player.Button />
-                <Player.Video src={`/videos/${item.file_name}.mp4`} />
-                {/* <Player.Video src="/videos/AmandaKnoxTrailer.mp4" /> */}
+                {/* <Player.Video src={`/videos/${video}.mp4`} /> */}
+                <Player.Video src="/videos/AmandaKnoxTrailer.mp4" />
               </Player>
-              <p>player</p>
             </Card.Feature>
-        ))}
           </Card>
         ))}
       </Card.Group>
