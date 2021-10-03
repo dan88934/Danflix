@@ -16,9 +16,8 @@ blocks:
   - name: Run
     task:
       jobs:
-        - name: Docker run
+        - name: Docker Run
           commands:
-            - checkout
             - 'docker run --publish 8080:8080 danflix'
         - name: Check Running Images
           commands:
