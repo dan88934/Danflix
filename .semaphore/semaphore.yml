@@ -12,13 +12,12 @@ blocks:
           commands:
             - docker build -t danflix .
             - docker images
-  - name: Run Docker image
+  - name: Run
     task:
-      jobs: []
-    jobs:
-      - name: Docker build
-        commands:
-          - 'docker run --publish 8080:8080 danflix'
-      - name: Check Running Images
-        commands:
-          - docker ps
+      jobs:
+        - name: Docker run
+          commands:
+            - 'docker run --publish 8080:8080 danflix'
+        - name: Check Running Images
+          commands:
+            - docker ps
