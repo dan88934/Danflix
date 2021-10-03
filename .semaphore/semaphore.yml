@@ -18,6 +18,7 @@ blocks:
       jobs:
         - name: Docker run
           commands:
+            - checkout
             - 'docker run --publish 8080:8080 danflix'
         - name: Check Running Images
           commands:
