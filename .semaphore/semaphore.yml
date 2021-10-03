@@ -10,7 +10,7 @@ blocks:
       jobs:
         - name: Docker build
           commands:
-         		- checkout
+            - checkout
             - docker build -t danflix .
             - docker images
   - name: Run
