@@ -13,7 +13,7 @@ import (
 var router *gin.Engine
 
 func main() {
-
+  gin.SetMode(gin.ReleaseMode)
   // Set the router as the default one provided by Gin
   router = gin.Default()
   // Process the templates at the start so that they don't have to be loaded
