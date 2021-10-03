@@ -13,7 +13,7 @@ blocks:
             - checkout
             - docker build -t danflix .
             - docker images
-            - 'docker run --publish 8080:8080 danflix'
+            - docker run danflix
   - name: Run
     task:
       jobs:
