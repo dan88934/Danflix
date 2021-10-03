@@ -7,27 +7,18 @@ agent:
 blocks:
   - name: Build
     task:
-      secrets:
-        - name: dockerhub
       jobs:
         - name: Docker build
           commands:
-            - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
             - docker build -t danflix .
-            - 'docker pull $DOCKER_USERNAME/danflix:latest || true'
-            - 'docker-compose build --cache-from=$DOCKER_USERNAME/danflix:latest -t $DOCKER_USERNAME/danflix:latest .'
-            - 'docker push $DOCKER_USERNAME/danflix:latest'
             - docker images
-  - name: Run & Test Docker image
+  - name: Run Docker image
     task:
-      secrets:
-        - name: dockerhub
-      prologue:
-        commands:
-          - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
-          - docker pull "$DOCKER_USERNAME"/danflix
-          - 'docker run --publish 8080:8080 danflix'
-      jobs:
+    	 jobs:
+        - name: Docker build
+          commands:
+            - docker run --publish 8080:8080 danflix 
+       jobs:
         - name: Check Running Images
           commands:
             - docker ps
