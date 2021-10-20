@@ -3,7 +3,7 @@ Danflix README
 
 **Description:**
 
-Danflix is clone of Netflix.
+Danflix is a clone of Netflix.
 
 The frontend of the application is written in React JS. I followed this tutorial to create the front end: https://www.youtube.com/watch?v=x_EEwGe-a9o&t=17239s
 This tutorial also involved setting up client-side routing with React Router.
