@@ -22,5 +22,5 @@ COPY react_frontend ./react_frontend
 #above might not be recursive
 RUN cp -r react_frontend ./react_frontend || echo "No resources to copy"
 RUN go build -o app
-EXPOSE 8080
+EXPOSE 8050
 CMD [ "./app" ]

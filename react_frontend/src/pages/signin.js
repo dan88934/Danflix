@@ -33,7 +33,7 @@ export default function Signin() {
     };
     return  (
     <>
-        <HeaderContainer>Hello from the sign in! 
+        <HeaderContainer>
             <Form>
                 <Form.Title>Sign In</Form.Title>
                 {error && <Form.Error data-testid="test">{error}</Form.Error>}

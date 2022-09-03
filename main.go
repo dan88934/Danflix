@@ -83,6 +83,6 @@ func main() {
   })
 
   // Start serving the application
-  router.Run()
+  router.Run(":8050")
 
 }
